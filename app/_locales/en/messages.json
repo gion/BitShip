@@ -1,0 +1,14 @@
+{
+  "appName": {
+    "message": "bitbucket-codeship",
+    "description": "The name of the application"
+  },
+  "appShortName": {
+    "message": "bitShip",
+    "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
+  },
+  "appDescription": {
+    "message": "A chrome extension that hooks into the bitbucket pull request page and modifies the UI according to the codeship build status for that specific commit",
+    "description": "The description of the application"
+  }
+}
