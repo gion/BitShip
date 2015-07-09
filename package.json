@@ -1,6 +1,6 @@
 {
   "name": "bitbucket-codeship",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "a-chrome-extension-that-hooks-into-the-bitbucket-pull-request-page-and-modifies-the-ui-according-to-the-codeship-build-status-for-that-specific-commit",
   "main": "index.js",
   "keywords": [
