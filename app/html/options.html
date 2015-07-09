@@ -1,13 +1,64 @@
 <!doctype html>
 <html ng-app="bitShip">
     <head>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
         <link href="../styles/options.css" rel="stylesheet">
     </head>
-    <body ng-controller="bitShipOptionsController">
+    <body ng-controller="bitShipOptionsController" ng-class="{'loading': loading}">
+      <article class="jumbotron container">
         <h1>BitShip</h1>
-        <h2>The Bitbucket - Codeship service integration you were waiting for!</h2>
-        {{settings}}
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-        <script src="../scripts/options.js"></script>
+        <h2>The <a href="http://bitbucket.com">Bitbucket</a> - <a href="http://codeship.com">Codeship</a> service integration you were waiting for!</h2>
+        <section class="forms">
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+          <form ng-submit="submit();">
+            <h3>Codeship settings</h3>
+            <div class="form-group">
+              <label for="inputEmail">Codeship Api Key</label>
+              <input ng-model="formData.codeship.apiKey" type="text" class="form-control" id="codeshipAPiKey" placeholder="Codeship Api Key">
+            </div>
+
+            <h3>Projects</h3>
+              <div ng-repeat="project in formData.projects">
+                <div class="form-group">
+                  <label for="project-{{$index}}-name">Project Name</label>
+                  <input ng-model="project.name" type="text" class="form-control" id="project-{{$index}}-name" placeholder="Project Name">
+                </div>
+                <div class="form-group">
+                  <h4>Codeship details</h4>
+                  <div class="form-group">
+                    <label for="project-{{$index}}-codeship-UUID">Codeship UUID</label>
+                    <input ng-model="project.codeship.UUID" type="text" class="form-control" id="project-{{$index}}-codeship-UUID" placeholder="Codeship UUID">
+                  </div>
+                  <div class="form-group">
+                    <label for="project-{{$index}}-codeship-id">Codeship Project Id</label>
+                    <input ng-model="project.codeship.projectId" type="text" class="form-control" id="project-{{$index}}-codeship-id" placeholder="Codeship Project Id">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <h4>Bitbucket details</h4>
+                  <div class="form-group">
+                    <label for="project-{{$index}}-bitbucket-owner">Bitbucket owner</label>
+                    <input ng-model="project.bitbucket.owner" type="text" class="form-control" id="project-{{$index}}-bitbucket-owner" placeholder="Bitbucket owner">
+                  </div>
+                  <div class="form-group">
+                    <label for="project-{{$index}}-bitbucket-repo">Bitbucket Repo</label>
+                    <input ng-model="project.bitbucket.repo" type="text" class="form-control" id="project-{{$index}}-bitbucket-repo" placeholder="Bitbucket Repo">
+                  </div>
+                  <div class="form-group">
+                    <label for="project-{{$index}}-bitbucket-branches">Bitbucket Brances (regex to match desired branches)</label>
+                    <input ng-model="project.bitbucket.branches" type="text" class="form-control" id="project-{{$index}}-bitbucket-branches" placeholder="Bitbucket regex to match branches">
+                  </div>
+                </div>
+              </div>
+            <input type="submit" class="btn btn-primary" value="save"></input>
+          </form>
+        </section>
+      </article>
+      {{settings}}
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+      <script src="../scripts/options.js"></script>
     </body>
 </html>
