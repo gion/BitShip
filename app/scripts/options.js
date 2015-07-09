@@ -12,7 +12,6 @@ angular
 function bitShipOptionsController($scope) {
 
   util.storage.get(function(settings) {
-    console.log(settings);
     $scope.settings = settings;
     $scope.formData = angular.copy(settings);
     $scope.$apply();
