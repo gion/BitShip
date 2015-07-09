@@ -78,17 +78,17 @@ var api = (function() {
 
     run: function() {
 
-      // this shuold be removed on "production"
-      util.storage.save(require('./settings.json'));
+      api.settings = util.storage.get(function(settings) {
+        api.settings = settings;
 
-      api.settings = util.storage.get();
+        console.log(api.settings);
 
-      console.log(api.credentials);
+        util.addClass('html', 'bitship-enabled');
+        api.getBuildStatus(function success(status, buildData) {
+          api.updateUI(status);
+        }, function error() {console.warn('nasol', arguments);});
+      });
 
-      util.addClass('html', 'bitship-enabled');
-      api.getBuildStatus(function success(status, buildData) {
-        api.updateUI(status);
-      }, function error() {console.warn('nasol', arguments);});
     }
   };
 

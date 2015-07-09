@@ -4,7 +4,6 @@ var util = (function() {
       var req = new XMLHttpRequest();
       req.onreadystatechange = function() {
         if(req.status >= 200 && req.status < 400) {
-          console.log('ajax success', req.responseText, JSON.parse(req.responseText));
           success(JSON.parse(req.responseText), req.status, req);
         } else {
       //    fail(req.responseText, req.status, req);
@@ -47,19 +46,30 @@ var util = (function() {
 
     storage: {
       data: null,
-      get: function() {
-        if(!this.data) {
-          this.data = JSON.parse(localStorage.getItem('bitShip'));
-        }
+      get: function(callback) {
+        // if(!this.data) {
+        //   this.data = JSON.parse(localStorage.getItem('bitShip'));
+        // }
+        //
+        // return this.data;
 
-        return this.data;
+        chrome.storage.sync.get('bitShip', function(result) {
+          console.log('chrome.storage.sync.get', arguments);
+          util.storage.data = JSON.parse(result['bitShip']);
+
+          if(callback) {
+            callback(util.storage.data);
+          }
+        });
       },
-      save: function(data) {
-        this.data = this.data || data;
+      save: function(data, callback) {
+        this.data = this.data || data || {};
 
-        if(this.data) {
-          localStorage.setItem('bitShip', JSON.stringify(this.data));
-        }
+        // if(this.data) {
+        //   localStorage.setItem('bitShip', JSON.stringify(this.data));
+        // }
+
+        chrome.storage.sync.set({bitShip: JSON.stringify(this.data)}, callback);
       }
     }
   };

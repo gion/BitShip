@@ -12,5 +12,8 @@ angular
 function bitShipOptionsController($scope) {
   console.log('util', util);
   console.log('settings', util.storage.get());
-  $scope.settings = util.storage.get();
+  util.storage.get(function(settings) {
+    $scope.settings = settings;
+    $scope.$apply();
+  });
 }
