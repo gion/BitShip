@@ -1,0 +1,75 @@
+@import 'colors.less';
+
+.bitship-enabled {
+  &.bitship-status-error {
+    #fulfill-pullrequest, #approve-button {
+      opacity: 0.3;
+      pointer-events: none !important;
+
+      &>span::before {
+        content: "Cannot";
+        float: left;
+        padding-right: 5px;
+      }
+    }
+
+    #bitship-container {
+      border-color: @red;
+      // background-color: rgba(255, 0, 0, 0.1);
+      background-color: @redBg;
+
+      &::after {
+        content: "The codeship tests have failed. This pull request cannot be merged!";
+        color: @red;
+      }
+    }
+  }
+
+  &.bitship-status-testing {
+    #bitship-container {
+      border-color: @gray;
+      // background-color: rgba(0, 0, 0, 0.1);
+      background-color: @grayBg;
+
+      &::after {
+        content: "The codeship build is in progress. Wait for it to end or merge at your own risk!";
+        color: @gray;
+      }
+    }
+  }
+
+  &.bitship-status-success {
+
+    #bitship-container {
+      border-color: @green;
+      // background-color: rgba(0, 255, 0, 0.1);
+      background-color: @greenBg;
+
+      &::after {
+        content: "The codeship tests have passed. Everything looks OK!";
+        color: @green;
+      }
+    }
+  }
+
+  #bitship-container {
+    border-width: 1px;
+    border-style: solid;
+    padding: 10px;
+    margin: 10px 0;
+    display: block;
+
+    &::after {
+      position: relative;
+      top: -0.5em;
+      left: 0.5em;
+    }
+  }
+}
+
+#bitship-container {
+  display: none;
+  .bitship-status {
+    transform: translateY(2px);
+  }
+}
