@@ -1,11 +1,13 @@
 <!doctype html>
-<html>
+<html ng-app="bitShip">
     <head>
         <link href="../styles/options.css" rel="stylesheet">
     </head>
-    <body>
-        <h1>'Allo, 'Allo!</h1>
-
+    <body ng-controller="bitShipOptionsController">
+        <h1>BitShip</h1>
+        <h2>The Bitbucket - Codeship service integration you were waiting for!</h2>
+        {{settings}}
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
         <script src="../scripts/options.js"></script>
     </body>
 </html>
