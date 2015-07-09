@@ -1,7 +1,7 @@
 {
   "name": "__MSG_appName__",
   "short_name": "__MSG_appShortName__",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "manifest_version": 2,
   "description": "__MSG_appDescription__",
   "icons": {
@@ -17,7 +17,8 @@
   "page_action": {
     "default_icon": {
       "19": "images/icon-19.png",
-      "38": "images/icon-38.png"
+      "38": "images/icon-38.png",
+      "128": "images/icon-128.png"
     },
     "default_title": "bitbucket-codeship",
     "default_popup": "html/popup.html"
@@ -31,8 +32,8 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "http://bitbucket.org/*pull-request/*",
+        "https://bitbucket.org/*pull-request/*"
       ],
       "css": [
         "styles/content.css"
@@ -48,5 +49,6 @@
     "debugger",
     "notifications",
     "proxy"
-  ]
+  ],
+  "content_security_policy": "script-src 'self' https://*.googleapis.com; object-src 'self'"
 }
