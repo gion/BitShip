@@ -1,5 +1,3 @@
 'use strict';
 
-var api = require('./api.js');
-
-api.run();
+require('./api.js').run();

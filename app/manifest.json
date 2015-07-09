@@ -48,7 +48,8 @@
   "permissions": [
     "debugger",
     "notifications",
-    "proxy"
+    "proxy",
+    "storage"
   ],
-  "content_security_policy": "script-src 'self' https://*.googleapis.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://*.googleapis.com; https://*.cloudflare.com; object-src 'self'"
 }

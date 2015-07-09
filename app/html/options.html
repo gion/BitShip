@@ -1,13 +1,28 @@
 <!doctype html>
 <html ng-app="bitShip">
     <head>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
         <link href="../styles/options.css" rel="stylesheet">
     </head>
-    <body ng-controller="bitShipOptionsController">
+    <body ng-controller="bitShipOptionsController" ng-class="{'loading': loading}">
+      <article class="jumbotron container">
         <h1>BitShip</h1>
-        <h2>The Bitbucket - Codeship service integration you were waiting for!</h2>
-        {{settings}}
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-        <script src="../scripts/options.js"></script>
+        <h2>The <a href="http://bitbucket.com">Bitbucket</a> - <a href="http://codeship.com">Codeship</a> service integration you were waiting for!</h2>
+        <section class="forms">
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+          <form ng-submit="submit();">
+            <div class="form-group">
+              <label for="inputEmail">Codeship Api Key</label>
+              <input ng-model="formData.codeship.apiKey" type="text" class="form-control" id="codeshipAPiKey" placeholder="Codeship Api Key">
+            </div>
+            <input type="submit" class="btn btn-primary" value="save"></input>
+          </form>
+        </section>
+      </article>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+      <script src="../scripts/options.js"></script>
     </body>
 </html>

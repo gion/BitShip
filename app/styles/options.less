@@ -1,0 +1,25 @@
+@import 'spinner.less';
+.spinner {
+  position: absolute;
+  left: calc(~"50% - 20px");
+  top: calc(~"50% - 20px");
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.loading {
+  form {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .spinner {
+    opacity: 1;
+    z-index: 99;
+  }
+}
+
+.forms {
+  position: relative;
+  transition: opacity 300ms ease-in-out;
+}
