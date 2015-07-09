@@ -1,3 +1,5 @@
 'use strict';
 
-console.log('\'Allo \'Allo! Content script');
+var api = require('./api.js');
+
+api.run();
