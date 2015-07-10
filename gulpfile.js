@@ -10,8 +10,8 @@ gulp.task('build', function(callback) {
       'html',
       'images',
       'locales',
-      'manifest',
       'scripts',
+      'manifest',
       'styles'
     ],
     'package',
@@ -34,8 +34,8 @@ gulp.task('watch', function(callback) {
       'html:dev',
       'images:dev',
       'locales:dev',
-      'manifest:dev',
       'scripts:dev',
+      'manifest:dev',
       'styles:dev'
     ],
     callback);
