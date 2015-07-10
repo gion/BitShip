@@ -7,7 +7,7 @@ angular.module('bitShip', []);
 
 angular
   .module('bitShip')
-    .controller('bitShipOptionsController', bitShipOptionsController);
+    .controller('bitShipOptionsController', ['$scope', bitShipOptionsController]);
 
 function bitShipOptionsController($scope) {
 
