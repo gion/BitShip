@@ -75,7 +75,7 @@ var api = (function() {
           container = document.createElement('a'),
           message = document.createElement('span'),
           statusImg = document.createElement('img'),
-          codeshipUUID = 'c8787840-06ba-0133-1ccd-2aa9a23a545f',
+          codeshipUUID = api.selectedProject.uuid,
           branchName = api.getBranchName(),
           imgUrl = 'https://codeship.com/projects/'+ codeshipUUID +'/status?branch=' + branchName;
 
@@ -124,7 +124,15 @@ var api = (function() {
 
             api.projects
             .filter(api.isEnabledForProject)
-            .forEach(function(project) {
+            .forEach(function(project, i) {
+              // execute only for the first project if there are many that have passed the filter
+              // :-? (may prevent some bugs on forked repos?)
+              if(i > 0) {
+                return;
+              }
+
+              api.selectedProject = project;
+
               api.getBuildStatus(project)
                 .done(api.updateUI);
             });

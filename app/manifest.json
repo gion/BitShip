@@ -1,7 +1,7 @@
 {
   "name": "__MSG_appName__",
   "short_name": "__MSG_appShortName__",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "manifest_version": 2,
   "description": "__MSG_appDescription__",
   "icons": {
@@ -20,7 +20,7 @@
       "38": "images/icon-38.png",
       "128": "images/icon-128.png"
     },
-    "default_title": "bitbucket-codeship",
+    "default_title": "BitShip",
     "default_popup": "html/popup.html"
   },
   "options_page": "html/options.html",
