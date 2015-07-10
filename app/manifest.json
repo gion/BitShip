@@ -20,7 +20,7 @@
       "38": "images/icon-38.png",
       "128": "images/icon-128.png"
     },
-    "default_title": "bitbucket-codeship",
+    "default_title": "BitShip",
     "default_popup": "html/popup.html"
   },
   "options_page": "html/options.html",

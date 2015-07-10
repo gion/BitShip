@@ -6,7 +6,7 @@ gulp.task('package', function() {
   var manifest = require('../app/manifest.json');
 
   return gulp.src('dist/**/*')
-    .pipe(zip('bitbucket-codeship-' + manifest.version + '.zip'))
+    .pipe(zip('bitship-' + manifest.version + '.zip'))
     .pipe(gulp.dest('packages'));
 
 });
