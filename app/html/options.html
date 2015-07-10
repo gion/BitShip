@@ -6,17 +6,28 @@
     </head>
     <body ng-controller="bitShipOptionsController" ng-class="{'loading': loading}">
       <article class="jumbotron container">
-        <h1>BitShip</h1>
-        <h2>The <a href="http://bitbucket.com">Bitbucket</a> - <a href="http://codeship.com">Codeship</a> service integration you were waiting for!</h2>
+        <header>
+          <img id="logo" src="../images/bitship-logo.png" alt="bitship logo" class="pull-right"></img>
+          <h1 class="pull-left show-sm">BitShip</h1>
+        </header>
+        <h2 class="show-sm clearfix">The <a href="http://bitbucket.com">Bitbucket</a> - <a href="http://codeship.com">Codeship</a> service integration you were waiting for!</h2>
+
         <section class="forms">
-        <div class="spinner">
-          <div class="dot1"></div>
-          <div class="dot2"></div>
-        </div>
+          <div class="spinner">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+          </div>
           <form ng-submit="submit();">
             <div class="form-group">
               <label for="inputEmail">Codeship Api Key</label>
-              <input ng-model="formData.codeship.apiKey" type="text" class="form-control" id="codeshipAPiKey" placeholder="Codeship Api Key">
+              <div class="input-group">
+                <input ng-model="formData.codeship.apiKey" type="text" class="form-control" id="codeshipAPiKey" placeholder="Codeship Api Key">
+                <span class="input-group-addon">
+                  <a href="https://codeship.com/documentation/integrations/api/#get-a-api-key" target="_blank" title="Get your Codeship Api Key">
+                    <i class="glyphicon glyphicon-question-sign"></i>
+                  </a>
+                </span>
+              </div>
             </div>
             <input type="submit" class="btn btn-primary" value="save"></input>
           </form>

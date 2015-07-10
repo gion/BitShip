@@ -6,3 +6,7 @@ app/scripts/settings.json
 *.log
 *.zip
 *.tar.gz
+
+# extension binary & key
+*.crx
+*.pem

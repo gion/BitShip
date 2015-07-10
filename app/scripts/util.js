@@ -4,9 +4,9 @@ var util = (function() {
       data: null,
       get: function(callback) {
         chrome.storage.sync.get('bitShip', function(result) {
-          util.storage.data = JSON.parse(result['bitShip']);
-          console.log('chrome.storage.sync.get', util.storage.data);
-          window.A = util;
+          var data = result ? result['bitShip'] : null;
+          util.storage.data = data ? JSON.parse(data) : {};
+
           if(callback) {
             callback(util.storage.data);
           }
