@@ -4,6 +4,9 @@
 ##What?
 BitShip is a chrome extension that facilitates communication between [Bitbucket](http://bitbucket.org) and [Codeship](http://codeship.com)
 
+##Where?
+You can download this extension from the [official BitShip google chrome store page](https://chrome.google.com/webstore/detail/bitship/heagnhmcighohcbdgndgmebmcpfgadbd), or you can manually download and install it from the [latest release page](https://github.com/gion/BitShip/releases/latest).
+
 ##Why?
 Because Codeship is awesome and Bitbucket is nice too...  
 ... and because there is no service that makes them play together like [github](http://github.com) and [travis](http://travis-ci.org) do so nicely out of the box.
