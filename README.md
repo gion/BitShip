@@ -21,7 +21,7 @@ It may be easier to think of this extension as if they were 3 components:
  - the part that communicates with the Codeship api
  - the part that interacts with the Bitbucket pages
 
- The extension was built using [yeoman](http://yeoman.io) and the [chrome extension kickstarter generator](https://github.com/yeoman/generator-chrome-extension).  
+ The extension was built using [yeoman](http://yeoman.io) and the [chrome extension kickstarter generator](https://github.com/HaNdTriX/generator-chrome-extension-kickstart) (thanks @HaNdTriX for it!).  
  Having a [Codeship Api Key](https://codeship.com/documentation/integrations/api/#get-a-api-key) makes it easy to do simple queries to collect data about Codeship projects and builds.  
  The extension itself runs (although it seems to be active all the time) only on Bitbucket pull request pages and asks Codeship for the user's project list. If the Bitbucket project that the extension runs on is in the project list, then (after *scraping* :( the pull request branch) BitShip gets the Codeship build status for the pull request.
  The next step is some kind of css voodoo magic that adds a class to the root node of the page. Based on that class, the pull request page UI is modified so it reveals the Codeship badge with a status message:  
