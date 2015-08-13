@@ -1,7 +1,7 @@
 {
   "name": "__MSG_appName__",
   "short_name": "__MSG_appShortName__",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "manifest_version": 2,
   "description": "__MSG_appDescription__",
   "icons": {
@@ -32,8 +32,8 @@
   "content_scripts": [
     {
       "matches": [
-        "http://bitbucket.org/*pull-request/*",
-        "https://bitbucket.org/*pull-request/*"
+        "http://bitbucket.org/*pull-requests/*/*",
+        "https://bitbucket.org/*pull-requests/*/*"
       ],
       "css": [
         "styles/content.css"
