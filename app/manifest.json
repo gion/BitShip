@@ -32,8 +32,8 @@
   "content_scripts": [
     {
       "matches": [
-        "http://bitbucket.org/*pull-request/*",
-        "https://bitbucket.org/*pull-request/*"
+        "http://bitbucket.org/*pull-requests/*/*",
+        "https://bitbucket.org/*pull-requests/*/*"
       ],
       "css": [
         "styles/content.css"
