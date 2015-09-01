@@ -29,6 +29,7 @@ var api = (function() {
     },
 
     _getCodeshipStatus: function(codeshipAPiKey, codeshipProjectId, success, fail) {
+      console.log('get codeship status', arguments);
       var url = 'https://codeship.com/api/v1/projects/'+ codeshipProjectId +'.jsonp?api_key=' + codeshipAPiKey;
       return $.get(url).done(success).fail(fail);
     },
@@ -112,6 +113,11 @@ var api = (function() {
     },
 
     run: function() {
+      
+      // do not run on the multiple pull requests page
+      if(util.isPullRequestsListingPage()) {
+        return;
+      }
 
       $('html').addClass('bitship-enabled');
 
