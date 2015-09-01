@@ -113,6 +113,11 @@ var api = (function() {
 
     run: function() {
 
+      // do not run on the multiple pull requests page
+      if(util.isPullRequestsListingPage()) {
+        return;
+      }
+
       $('html').addClass('bitship-enabled');
 
       api.settings = util.storage.get(function(settings) {
