@@ -16,6 +16,11 @@ var util = (function() {
         this.data = this.data || data || {};
         chrome.storage.sync.set({bitShip: JSON.stringify(this.data)}, callback);
       }
+    },
+
+    isPullRequestsListingPage: function() {
+      // this element should be available oly on multiple pull request page
+      return !!document.getElementById('list-pullrequests');
     }
   };
   return util;
