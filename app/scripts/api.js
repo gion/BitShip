@@ -62,22 +62,54 @@ var api = (function() {
     },
 
     updateUI: function(status, buildData) {
-      $('html')
-        .removeClass('bitship-status-error bitship-status-success bitship-status-testing')
-        .addClass('bitship-status-' + status);
-
-      $('#bitship-container').remove();
+      api.updateBuildStatus(status);
       api._addNotificationDom(buildData);
+    },
+
+    updateBuildStatus: function(status) {
+      $('html')
+        .removeClass('bitship-status-error bitship-status-success bitship-status-testing bitship-noMergeDuringBuild')
+        .toggleClass('bitship-noMergeDuringBuild', api.settings.noMergeDuringBuild)
+        .addClass('bitship-status-' + status);
+    },
+
+    startPollingForStatusUpdate: function(project) {
+      api.clearPollingForStatusUpdate();
+
+      api._t = setInterval(function() {
+        api.getBuildStatus(project)
+          .done(function(status, buildData) {
+            if(status !== 'testing') {
+            // clear the timeout
+              api.clearPollingForStatusUpdate();
+            }
+
+            if(api.latestStatus !== status) {
+              // update the global latest sstatus
+              api.latestStatus = status;
+
+              // update the dom classes based on this status
+              api.updateUI(status, buildData);
+            }
+          });
+      }, 10 * 1000);
+    },
+
+    clearPollingForStatusUpdate: function() {
+      if(api._t) {
+        clearInterval(api._t);
+      }
     },
 
     _addNotificationDom: function(buildData) {
       var //domEl = document.createDocumentFragment(),
+          timestamp = new Date().getTime(),
           container = document.createElement('a'),
           message = document.createElement('span'),
           statusImg = document.createElement('img'),
           codeshipUUID = api.selectedProject.uuid,
           branchName = api.getBranchName(),
-          imgUrl = 'https://codeship.com/projects/'+ codeshipUUID +'/status?branch=' + branchName;
+          imgUrl = 'https://codeship.com/projects/'+ codeshipUUID +'/status?branch=' + branchName + '&t=' + timestamp;
 
       statusImg.classList.add('bitship-status');
       statusImg.setAttribute('src', imgUrl);
@@ -93,6 +125,9 @@ var api = (function() {
 
       // domEl.appendChild(container)
       var target = $('#pull-request-diff-header');
+
+      $('#bitship-container').remove();
+
       $(container).insertAfter(target);
     },
 
@@ -139,7 +174,13 @@ var api = (function() {
               api.selectedProject = project;
 
               api.getBuildStatus(project)
-                .done(api.updateUI);
+                .done(function(status) {
+                  api.latestStatus = status;
+                  if(status === 'testing') {
+                    api.startPollingForStatusUpdate(project);
+                  }
+                })
+                .done(api.updateUI)
             });
           })
           .fail(function() {

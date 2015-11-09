@@ -1,39 +1,43 @@
 <!doctype html>
 <html ng-app="bitShip">
-    <head>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../styles/options.css" rel="stylesheet">
-    </head>
-    <body ng-controller="bitShipOptionsController" ng-class="{'loading': loading}">
-      <article class="jumbotron container">
-        <header>
-          <img id="logo" src="../images/bitship-logo.png" alt="bitship logo" class="pull-right"></img>
-          <h1 class="pull-left show-sm">BitShip</h1>
-        </header>
-        <h2 class="show-sm clearfix">The <a href="http://bitbucket.com">Bitbucket</a> - <a href="http://codeship.com">Codeship</a> service integration you were waiting for!</h2>
+  <head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles/options.css" rel="stylesheet">
+  </head>
+  <body ng-controller="bitShipOptionsController" ng-class="{'loading': loading}">
+    <article class="jumbotron container">
+      <header>
+        <img id="logo" src="../images/bitship-logo.png" alt="bitship logo" class="pull-right"></img>
+        <h1 class="pull-left show-sm">BitShip</h1>
+      </header>
+      <h2 class="show-sm clearfix">The <a href="http://bitbucket.com">Bitbucket</a> - <a href="http://codeship.com">Codeship</a> service integration you were waiting for!</h2>
 
-        <section class="forms">
-          <div class="spinner">
-            <div class="dot1"></div>
-            <div class="dot2"></div>
-          </div>
-          <form ng-submit="submit();">
-            <div class="form-group">
-              <label for="inputEmail">Codeship Api Key</label>
-              <div class="input-group">
-                <input ng-model="formData.codeship.apiKey" type="text" class="form-control" id="codeshipAPiKey" placeholder="Codeship Api Key">
-                <span class="input-group-addon">
-                  <a href="https://codeship.com/documentation/integrations/api/#get-a-api-key" target="_blank" title="Get your Codeship Api Key">
-                    <i class="glyphicon glyphicon-question-sign"></i>
-                  </a>
-                </span>
-              </div>
+      <section class="forms">
+        <div class="spinner">
+          <div class="dot1"></div>
+          <div class="dot2"></div>
+        </div>
+        <form ng-submit="submit();">
+          <div class="form-group">
+            <label for="inputEmail">Codeship Api Key</label>
+            <div class="input-group">
+              <input ng-model="formData.codeship.apiKey" type="text" class="form-control" id="codeshipAPiKey" placeholder="Codeship Api Key">
+              <span class="input-group-addon">
+                <a href="https://codeship.com/documentation/integrations/api/#get-a-api-key" target="_blank" title="Get your Codeship Api Key">
+                  <i class="glyphicon glyphicon-question-sign"></i>
+                </a>
+              </span>
             </div>
-            <input type="submit" class="btn btn-primary" value="save"></input>
-          </form>
-        </section>
-      </article>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-      <script src="../scripts/options.js"></script>
-    </body>
+          </div>
+          <div class="form-group">
+            <input ng-model="formData.noMergeDuringBuild" type="checkbox" id="merge-during-build">
+            <label ng-class="{'line-through':!formData.noMergeDuringBuild}" for="merge-during-build">disable merge option until build is finished</label>
+          </div>
+          <input type="submit" class="btn btn-primary" value="save"></input>
+        </form>
+      </section>
+    </article>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="../scripts/options.js"></script>
+  </body>
 </html>
