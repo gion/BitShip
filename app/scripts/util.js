@@ -1,7 +1,9 @@
 var util = (function() {
+
   var util = {
     storage: {
       data: null,
+
       get: function(callback) {
         chrome.storage.sync.get('bitShip', function(result) {
           var data = result ? result['bitShip'] : null;
@@ -12,6 +14,7 @@ var util = (function() {
           }
         });
       },
+      
       save: function(data, callback) {
         this.data = this.data || data || {};
         chrome.storage.sync.set({bitShip: JSON.stringify(this.data)}, callback);
@@ -23,6 +26,7 @@ var util = (function() {
       return !!document.getElementById('list-pullrequests');
     }
   };
+
   return util;
 })();
 
