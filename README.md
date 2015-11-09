@@ -12,7 +12,6 @@ Because Codeship is awesome and Bitbucket is nice too...
 ... and because there is no service that makes them play together like [github](http://github.com) and [travis](http://travis-ci.org) do so nicely out of the box.
 
 ##When?
-It's a recent project. The actual development started 2 days ago, but the idea is in my head for a longer period of time.
 After moving from Github to Bitbucket, I searched for a way to integrate Codeship as a Bitbucket service rather than a separate app that uses some git hooks. And after I found out that there aren't any other ways to achieve the classic Github-Travis combination with Bitbucket and Codeship, I decided to take the matter in my own hands and build a solution, hoping that it will be appealing to other developpers in my position too.
 
 ##How?
