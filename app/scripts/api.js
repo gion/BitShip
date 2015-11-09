@@ -158,8 +158,6 @@ var api = (function() {
       api.settings = util.storage.get(function(settings) {
         api.settings = settings;
 
-        console.log(api.settings);
-
         api.getCodeshipProjects()
           .done(function(response) {
             api.projects = response.projects;
