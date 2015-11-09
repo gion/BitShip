@@ -31,6 +31,19 @@
   }
 
   &.bitship-status-testing {
+    &.bitship-mergeDuringBuild {
+      #fulfill-pullrequest, #approve-button {
+        opacity: 0.3;
+        pointer-events: none !important;
+
+        &>span::before {
+          content: "Cannot";
+          float: left;
+          padding-right: 5px;
+        }
+      }
+    }
+
     #bitship-container {
       border-color: @gray;
       // background-color: rgba(0, 0, 0, 0.1);

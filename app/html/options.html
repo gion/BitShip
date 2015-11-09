@@ -29,6 +29,10 @@
                 </span>
               </div>
             </div>
+            <div class="form-group">
+              <input ng-model="formData.mergeDuringBuild" type="checkbox" id="merge-during-build">
+              <label ng-class="{'line-through':!formData.mergeDuringBuild}" for="merge-during-build">Merge before codehsip build has finished</label>
+            </div>
             <input type="submit" class="btn btn-primary" value="save"></input>
           </form>
         </section>

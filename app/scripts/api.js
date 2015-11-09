@@ -63,7 +63,8 @@ var api = (function() {
 
     updateUI: function(status, buildData) {
       $('html')
-        .removeClass('bitship-status-error bitship-status-success bitship-status-testing')
+        .removeClass('bitship-status-error bitship-status-success bitship-status-testing bitship-mergeDuringBuild')
+        .toggleClass('bitship-mergeDuringBuild', api.settings.mergeDuringBuild)
         .addClass('bitship-status-' + status);
 
       $('#bitship-container').remove();
@@ -122,6 +123,8 @@ var api = (function() {
 
       api.settings = util.storage.get(function(settings) {
         api.settings = settings;
+
+        console.log(api.settings);
 
         api.getCodeshipProjects()
           .done(function(response) {
