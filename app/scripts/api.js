@@ -75,16 +75,13 @@ var api = (function() {
 
     startPollingForStatusUpdate: function(project) {
       api.clearPollingForStatusUpdate();
-      console.log('started poll');
+
       api._t = setInterval(function() {
-        console.log('polling :D');
         api.getBuildStatus(project)
           .done(function(status, buildData) {
-
             if(status !== 'testing') {
             // clear the timeout
               api.clearPollingForStatusUpdate();
-              console.log('clear');
             }
 
             if(api.latestStatus !== status) {
@@ -99,7 +96,7 @@ var api = (function() {
     },
 
     clearPollingForStatusUpdate: function() {
-      if(api.t) {
+      if(api._t) {
         clearInterval(api._t);
       }
     },
