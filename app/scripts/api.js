@@ -2,6 +2,7 @@ var util = require('./util.js');
 var $ = require('./jquery-2.1.4.min.js');
 
 var api = (function() {
+
   var api = {
     // scrapes the dom to find the "from" branch of the pull request
     getBranchName: function() {
@@ -68,8 +69,10 @@ var api = (function() {
 
     updateBuildStatus: function(status) {
       $('html')
-        .removeClass('bitship-status-error bitship-status-success bitship-status-testing bitship-noMergeDuringBuild')
+        .removeClass('bitship-status-error bitship-status-success bitship-status-testing bitship-noMergeDuringBuild bitship-noSelfMerge')
         .toggleClass('bitship-noMergeDuringBuild', api.settings.noMergeDuringBuild)
+        .toggleClass('bitship-noSelfMerge', api.settings.noSelfMerge)
+        .toggleClass('bitship-isOwnerOfPR', api.isOwnerOfPR)
         .addClass('bitship-status-' + status);
     },
 
@@ -144,6 +147,10 @@ var api = (function() {
           isBitbucketProject = projectData.repository_provider.toLowerCase() === 'bitbucket';
 
       return isBitbucketProject && isSameName;
+    },
+
+    isOwnerOfPR: function() {
+      return $('#pullrequest-author').data('currentUserIsAuthor');
     },
 
     run: function() {
