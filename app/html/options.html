@@ -30,8 +30,13 @@
             </div>
           </div>
           <div class="form-group">
-            <input ng-model="formData.noMergeDuringBuild" type="checkbox" id="merge-during-build">
+            <input ng-model="formData.noMergeDuringBuild" type="checkbox" id="merge-during-build" checked="checked">
             <label ng-class="{'line-through':!formData.noMergeDuringBuild}" for="merge-during-build">disable merge option until build is finished</label>
+          </div>
+          </div>
+          <div class="form-group">
+            <input ng-model="formData.noSelfMerge" type="checkbox" id="no-self-merge" checked="checked">
+            <label ng-class="{'line-through':!formData.noSelfMerge}" for="no-self-merge">you cannot merge your own pull request</label>
           </div>
           <input type="submit" class="btn btn-primary" value="save"></input>
         </form>
