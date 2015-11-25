@@ -1,6 +1,6 @@
 {
   "name": "bitship",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "a-chrome-extension-that-updates-the-bitbucket-pull-request-page-ui-according-to-the-codeship-build-status",
   "main": "index.js",
   "keywords": [
