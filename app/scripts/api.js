@@ -68,6 +68,13 @@ var api = (function() {
     },
 
     updateBuildStatus: function(status) {
+      // make sure we don't let anyone merge the PR if we have an unsuccessful status
+      var failStatuses = 'stopped waiting ignored blocked infrastructure_failure error'.split(' ');
+
+      if(failStatuses.indexOf(status) !== -1) {
+        status = 'error';
+      }
+
       $('html')
         .removeClass('bitship-status-error bitship-status-success bitship-status-testing bitship-noMergeDuringBuild bitship-noSelfMerge')
         .toggleClass('bitship-noMergeDuringBuild', api.settings.noMergeDuringBuild)
